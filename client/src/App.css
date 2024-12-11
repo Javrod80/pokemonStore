@@ -9,9 +9,9 @@ body {
   background-image: url('/public/images/caricatura-pikachu.jpg');
   background-repeat: no-repeat;
   background-size: cover;
- }
- 
-  
+}
+
+
 
 .home-container {
   display: flex;
@@ -21,8 +21,8 @@ body {
   padding: 20px;
   background-color: #f4f4f9;
   text-align: center;
-  
-  
+
+
 }
 
 .home-container h2 {
@@ -37,7 +37,7 @@ body {
   height: auto;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
- 
+
 }
 
 .home-container p {
@@ -45,6 +45,7 @@ body {
   color: #666;
   margin-top: 20px;
 }
+
 .pokemon-container-search {
   display: flex;
   flex-direction: column;
@@ -67,16 +68,26 @@ body {
 }
 
 .pikachu-display {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   text-align: center;
-  position: relative;
   margin-top: -100px;
+  gap: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  background-color: #f9f9f9;
+  max-width: 400px;
+  margin: 10px auto;
+
 
 
 }
 
 .pikachu-display img {
-
-  width: 150px;
+  border-radius: 5px;
+  max-width: 100px;
   height: auto;
 }
 
@@ -99,8 +110,8 @@ body {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   width: 160px;
   background-color: #f9f9f9;
-  
-  
+
+
 }
 
 .pokemon-card img {
@@ -196,6 +207,7 @@ body {
   font-size: 1.1rem;
   color: #666;
 }
+
 /* Estilo general para el footer */
 .footer {
   width: 100%;
@@ -212,6 +224,7 @@ body {
   box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
 
 }
+
 /* Estilo general para el header */
 .header {
   width: 100%;
@@ -224,8 +237,9 @@ body {
   position: sticky;
   top: 0;
   z-index: 10;
-  
+
 }
+
 /* Estilo para el título */
 .header h1 {
   font-size: 2rem;
@@ -233,6 +247,7 @@ body {
   letter-spacing: 2px;
   text-transform: uppercase;
 }
+
 /* Estilo para la barra de navegación */
 .navbar {
   background-color: #333;
@@ -262,6 +277,7 @@ body {
   color: #4CAF50;
 
 }
+
 .about-container {
   display: flex;
   flex-direction: column;
@@ -272,10 +288,10 @@ body {
   /* Fondo suave */
   padding: 20px;
 
-    /* Asegura que el contenedor ocupe toda la altura de la ventana */
-    box-sizing: border-box;
- 
- 
+  /* Asegura que el contenedor ocupe toda la altura de la ventana */
+  box-sizing: border-box;
+
+
 }
 
 .about-container h2 {
