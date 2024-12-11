@@ -7,9 +7,7 @@ const Home = () => {
         <div className="home-container">
 
             <h2>Bienvenido a la tienda Pokemons</h2>
-
-
-
+           
         </div>
 
 
