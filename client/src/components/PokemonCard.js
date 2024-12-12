@@ -1,5 +1,5 @@
 import React from "react";
-import { useCart } from "./CartProvider";
+import { useCart } from "../providers/CartProvider";
 
 export default function PokemonCard({ pokemon }) {
     const { addToCart } = useCart();

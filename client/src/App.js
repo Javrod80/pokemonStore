@@ -1,46 +1,51 @@
 
 import './App.css';
+import React from "react";
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './pages/Home';
 import About from './pages/About';
 import Cart from './components/Cart';
 import NotFound from './pages/NotFound';
-import NavBar from './pages/NavBar';
-
+import Login from './components/Login'
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import ApiFetch from './components/ApiFetch';
-import { CartProvider } from './components/CartProvider';
-
+import { CartProvider } from './providers/CartProvider';
+import { UserProvider } from './providers/UserProvider';
+import UserProfile from './hooks/UserProfile';
+import Layout from './components/Layout';
 
 
 
 
 function App() {
   return (
-    <div className='Container'>
+    
+      <UserProvider>
       <CartProvider>
         <Router>
           <Header />
-          <NavBar />
           <Routes>
-
-            <Route path="/" element={<Home />} />
+          <Route path="/" element={<Login />} /> 
+          <Route path="/" element={<Layout />}>  
+            <Route path="/home" element={<Home />} />
             <Route path="/about" element={<About />} />
+            <Route path="/profile" element={<UserProfile />} />
             <Route path="/pokemons" element={<ApiFetch />} />
             <Route path="/cart" element={<Cart />} />
             <Route path="*" element={<NotFound />} />
-
+            </Route>
           </Routes>
-
-          <Footer />
+         
         </Router>
+        <Footer />
       </CartProvider>
+      </UserProvider>
 
 
 
 
-    </div>
+   
   );
 }
 

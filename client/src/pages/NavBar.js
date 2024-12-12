@@ -8,14 +8,18 @@ export default function NavBar() {
                 <li className="navbar-item">
                     <Link to="/">Inicio</Link>
                 </li>
-                <li className="navbar-item">
-                    <Link to="/about">Acerca de</Link>
-                </li>
+
                 <li className="navbar-item">
                     <Link to="/pokemons">Pokemons</Link>
                 </li>
                 <li className="navbar-item">
                     <Link to="/cart">Carrito</Link>
+                </li>
+                <li className="navbar-item">
+                    <Link to="/about">Acerca de</Link>
+                </li>
+                <li className="navbar-item">
+                    <Link to="/profile">Perfil</Link>
                 </li>
             </ul>
         </nav>

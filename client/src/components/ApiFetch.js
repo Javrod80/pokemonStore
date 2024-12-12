@@ -42,6 +42,7 @@ const ApiFetch = () => {
     return (
         <div>
             <div className="pokemon-container-search">
+                <p>Busca tu Pokemon haber si lo tenemos....</p>
                 {/* Input para buscar un Pokémon específico */}
                 <input type="text" name="pokemon" placeholder="Buscar Pokémon" onChange={(e) => setPokemon(e.target.value)} />
                 {/* Mostrar información del Pokémon buscado */}
