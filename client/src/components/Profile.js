@@ -11,3 +11,5 @@ const Profile = () => {
 };
 
 export default Profile;
+
+// Al final no uso este componente

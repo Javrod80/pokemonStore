@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import useFetch from "../hooks/useFetch";
 import PokemonCard from "./PokemonCard";
+import { useCart } from "../providers/CartProvider";
 
 
 
@@ -8,7 +9,7 @@ const ApiFetch = () => {
 
     const [setPokemon, searchData] = useFetch();
     const [allPokemon, setAllPokemon] = useState([]);
-
+    const { addToCart } = useCart();
 
     // Función para generar un precio aleatorio
     const generateRandomPrice = () => Math.floor(Math.random() * (100 - 10 + 1)) + 10;
@@ -49,10 +50,13 @@ const ApiFetch = () => {
             </div>
             {searchData
                 ? searchData.map((poke, i) => {
+                 
+                    
                     return (
                         <div key={i} className="pikachu-display">
                             <h1>  {poke.name}</h1>
                             <img src={poke.sprites?.other?.home?.front_default} alt=""></img>
+                
                         </div>
                     );
                 })
@@ -64,6 +68,7 @@ const ApiFetch = () => {
                             src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png"
                             alt="Pikachu"
                         />
+                    
                     </div>
                 )}
             <div id="div-buttons-pokemon">
