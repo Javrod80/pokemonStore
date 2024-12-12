@@ -9,6 +9,10 @@ const ApiFetch = () => {
     const [setPokemon, searchData] = useFetch();
     const [allPokemon, setAllPokemon] = useState([]);
 
+
+    // Función para generar un precio aleatorio
+    const generateRandomPrice = () => Math.floor(Math.random() * (100 - 10 + 1)) + 10;
+
     // Está predeterminado Pikachu.
     useEffect(() => {
         setPokemon("pikachu");
@@ -22,6 +26,7 @@ const ApiFetch = () => {
                 const pokemons = res.results.map((r) => ({
                     name: r.name,
                     url: r.url,
+                    price: generateRandomPrice(),// Agrega el precio aleatorio
                 }));
                 //Ordenar los pokemons alfabeticamente
                 setAllPokemon(pokemons.sort((a, b) => a.name.localeCompare(b.name)));

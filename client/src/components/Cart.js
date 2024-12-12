@@ -7,6 +7,11 @@ const Cart = () => {
     const { cart, removeFromCart } = useCart();
     const [pokemonData, setPokemonData] = useState([]);
 
+    // Calcular el total del carrito
+    const calculateTotal = () => {
+        return cart.reduce((total, item) => total + item.price * item.quantity, 0);
+    };
+
     useEffect(() => {
         const fetchPokemonData = async () => {
             const data = await Promise.all(
@@ -27,6 +32,7 @@ const Cart = () => {
     }, [cart]);  // Vuelve a ejecutar cuando el carrito cambia
 
     return (
+        <div className="cart-page">
         <div className="cart">
             <h2>Carrito</h2>
             {pokemonData.length === 0 ? (
@@ -34,7 +40,9 @@ const Cart = () => {
                     El carrito está vacío
                 </p>
             ) : (
-                pokemonData.map((item) => (
+                   
+                        <div className="cart-items">
+                {pokemonData.map((item) => (
                     <div
                         key={item.id}
                         className="cart-item">
@@ -48,6 +56,7 @@ const Cart = () => {
                         <p >
                             {item.name} (x{item.quantity})
                         </p>
+                        <p>Price: ${item.price * item.quantity}</p>
                         <button
                             onClick={() => removeFromCart(item.id)}
 
@@ -55,9 +64,18 @@ const Cart = () => {
                             Eliminar
                         </button>
                     </div>
-                ))
+                    ))}
+                    </div>
+
             )}
         </div>
+            {pokemonData.length > 0 && (
+                <div className="cart-total">
+                    <h3>Total: {calculateTotal()} $</h3>
+                </div>
+            )}
+        </div>
+       
     );
 };
 

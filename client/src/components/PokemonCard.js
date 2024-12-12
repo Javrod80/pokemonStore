@@ -16,6 +16,7 @@ export default function PokemonCard({ pokemon }) {
 
         <div className="pokemon-card">
             <h3>{pokemon.name}</h3>
+            <p>Price: ${pokemon.price}</p>
             <img src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork//${id}.png`} alt={pokemon.name} width="100" />
             <button onClick={() => addToCart({ ...pokemon, id })}>Agregar al carrito</button>
         </div>
