@@ -11,6 +11,7 @@ const ApiFetch = () => {
     const [allPokemon, setAllPokemon] = useState([]);
     const { addToCart } = useCart();
 
+
     // Función para generar un precio aleatorio
     const generateRandomPrice = () => Math.floor(Math.random() * (100 - 10 + 1)) + 10;
 
@@ -39,7 +40,6 @@ const ApiFetch = () => {
     }, []);
 
 
-
     return (
         <div>
             <div className="pokemon-container-search">
@@ -50,14 +50,22 @@ const ApiFetch = () => {
             </div>
             {searchData
                 ? searchData.map((poke, i) => {
-                
-                    
+                        const pokemon = allPokemon.find((p) => p.name === poke.name);
+                        
+
                     return (
                         <div key={i} className="pikachu-display">
+
                             <h1>  {poke.name}</h1>
                             <img src={poke.sprites?.other?.home?.front_default} alt=""></img>
-                           
+                            <p>Price: ${pokemon ? pokemon.price : "Loading..."}</p>
+ 
+
+ 
+    
+        
                         </div>
+
                     );
                 })
                 : (
@@ -68,7 +76,7 @@ const ApiFetch = () => {
                             src="https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/25.png"
                             alt="Pikachu"
                         />
-                    
+
                     </div>
                 )}
             <div id="div-buttons-pokemon">
@@ -80,7 +88,7 @@ const ApiFetch = () => {
                     <p>Cargando Pokémon...</p>
                 )}
             </div>
-        </div>
+        </div >
     );
 
 }
