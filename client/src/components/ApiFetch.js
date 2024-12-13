@@ -50,13 +50,13 @@ const ApiFetch = () => {
             </div>
             {searchData
                 ? searchData.map((poke, i) => {
-                 
+                
                     
                     return (
                         <div key={i} className="pikachu-display">
                             <h1>  {poke.name}</h1>
                             <img src={poke.sprites?.other?.home?.front_default} alt=""></img>
-                
+                           
                         </div>
                     );
                 })
