@@ -10,15 +10,18 @@ const ApiFetch = () => {
     const [setPokemon, searchData] = useFetch();
     const [allPokemon, setAllPokemon] = useState([]);
     const { addToCart } = useCart();
-
-
+    
     // Función para generar un precio aleatorio
     const generateRandomPrice = () => Math.floor(Math.random() * (100 - 10 + 1)) + 10;
 
-    // Está predeterminado Pikachu.
-    useEffect(() => {
-        setPokemon("pikachu");
-    }, []);
+    // Obtener precios desde localStorage 
+    const getStoredPrices = () => JSON.parse(localStorage.getItem("pokemonPrices")) || {};
+    // Guardar precios actualizados en localStorage
+    const savePricesToStorage = (prices) => {
+        localStorage.setItem("pokemonPrices", JSON.stringify(prices));
+    };
+    // Estado para almacenar los precios
+    const [prices, setPrices] = useState(getStoredPrices);
 
     // Para recoger todos los pokemons y crear sus botones
     useEffect(() => {
@@ -28,8 +31,18 @@ const ApiFetch = () => {
                 const pokemons = res.results.map((r) => ({
                     name: r.name,
                     url: r.url,
-                    price: generateRandomPrice(),// Agrega el precio aleatorio
+                    
                 }));
+                // Generar precios únicos para cada Pokémon
+                const newPrices = {...prices};
+                pokemons.forEach((pokemon) => {
+                    if (!prices[pokemon.name]) {
+                        newPrices[pokemon.name] = generateRandomPrice();
+                    }
+                });
+                // Actualizar precios
+                setPrices(newPrices);
+                savePricesToStorage(newPrices);
                 //Ordenar los pokemons alfabeticamente
                 setAllPokemon(pokemons.sort((a, b) => a.name.localeCompare(b.name)));
             })
@@ -38,7 +51,10 @@ const ApiFetch = () => {
                 setAllPokemon([]);
             });
     }, []);
-
+    // Está predeterminado Pikachu.
+    useEffect(() => {
+        setPokemon("pikachu");
+    }, []);
 
     return (
         <div>
@@ -51,15 +67,25 @@ const ApiFetch = () => {
             {searchData
                 ? searchData.map((poke, i) => {
                         const pokemon = allPokemon.find((p) => p.name === poke.name);
-                        
+                         const pokemonPrice = prices[poke.name];
 
                     return (
                         <div key={i} className="pikachu-display">
 
                             <h1>  {poke.name}</h1>
                             <img src={poke.sprites?.other?.home?.front_default} alt=""></img>
-                            <p>Price: ${pokemon ? pokemon.price : "Loading..."}</p>
- 
+                            <p>Price: ${pokemonPrice || "Loading..."}</p>
+                            <button
+                                onClick={() =>
+                                    addToCart({
+                                        ...pokemon,
+                                        price: pokemonPrice,
+                                        id: poke.id || pokemon?.url.split("/")[6],
+                                    })
+                                }
+                            >
+                                Agregar al carrito
+                            </button>
 
  
     
@@ -82,7 +108,13 @@ const ApiFetch = () => {
             <div id="div-buttons-pokemon">
                 {allPokemon.length > 0 ? (
                     allPokemon.map((pokemon, i) => (
-                        <PokemonCard key={i} pokemon={pokemon} />
+                        <PokemonCard
+                            key={i}
+                            pokemon={{
+                                ...pokemon,
+                                price: prices[pokemon.name], // Pasar el precio desde el estado "prices"
+                            }}
+                        />
                     ))
                 ) : (
                     <p>Cargando Pokémon...</p>

@@ -9,6 +9,8 @@ body {
   background-image: url('/public/images/caricatura-pikachu.jpg');
   background-repeat: no-repeat;
   background-size: cover;
+
+  
 }
 
 /* Estilos del input y pikachu predeterminado*/
@@ -50,7 +52,7 @@ body {
   border-radius: 10px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   background-color: #f9f9f9;
-  max-width: 400px;
+  max-width: 500px;
   margin: 10px auto;
 
 }
@@ -61,7 +63,27 @@ body {
   height: auto;
 }
 
+.pikachu-display p {
+  font-size: 1.2rem;
+  color: #666;
+  margin-top: 20px;
+  font-weight: bold;
+}
+.pikachu-display button {
+  background-color: #4CAF50;
+  color: white;
+  padding: 8px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 0.8rem;
+ 
+  transition: background-color 0.3s ease;
+}
 
+.pikachu-display button:hover {
+  background-color: #45a049;  
+}
 
 /* Estilos de las tarjetas de los pokemons */
 .pokemon-card {
@@ -73,10 +95,12 @@ body {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   width: 170px;
   background-color: #f9f9f9;
-  
-
-  
-}
+  transition: transform 0.3s ease;
+  margin: 2px auto;
+  cursor: pointer;
+  border: 1px solid #ccc;
+ 
+  }
 #div-buttons-pokemon {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
@@ -90,6 +114,7 @@ body {
 .pokemon-card p {
  color: #007bff;
 font-weight: bold;
+
 
 }
 
@@ -232,17 +257,16 @@ font-weight: bold;
 /* Estilo general para el footer */
 .footer {
   width: 100%;
-  padding: 15px 20px;
   background-color: #333;
   color: white;
   text-align: center;
-  font-size: 14px;
+  font-size: 12px;
   font-family: Arial, sans-serif;
   position: fixed;
-  bottom: 0;
-  left: 0;
-  z-index: 10;
   box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
+  bottom: 0;
+    left: 0;
+    z-index: 1;
 
 }
 
@@ -273,9 +297,8 @@ font-weight: bold;
 .navbar {
   background-color: #333;
   padding: 10px 20px;
+
 }
-
-
 .navbar-list {
   display: flex;
   justify-content: space-around;

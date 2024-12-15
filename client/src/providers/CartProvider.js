@@ -28,7 +28,7 @@ export function CartProvider({ children }) {
     const removeFromCart = (id) => {
         console.log("Eliminando Pokémon con id:", id);
         setCart((prevCart) => {
-            const updatedCart = prevCart.filter((item) => item.id !== id)
+            const updatedCart = prevCart.filter((item) => item.id !== id);
             console.log("Carrito despúes de eliminar:", updatedCart)
             return updatedCart // Eliminar solo el Pokémon con ese id
         })
