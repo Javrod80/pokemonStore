@@ -1,4 +1,5 @@
 import { createContext, useState, useContext } from "react";
+import { toast } from "react-toastify";
 
 
 // Crea el contexto
@@ -18,7 +19,18 @@ export function UserProvider({ children }) {
             setUser({  isAuthenticated: true , username });
             return true;
         } else {
-            alert("Credenciales incorrectas");
+            toast.error('Credenciales incorrectas', {
+                            position: "top-right",
+                            autoClose: 3000,
+                            hideProgressBar: false,
+                            closeOnClick: true,
+                            pauseOnHover: true,
+                            draggable: true,
+                            progress: undefined,
+                            className: 'custom-toast',
+                            bodyClassName: 'custom-toast-body',
+            });
+            return false; 
         }
     };
     // Función para cerrar sesión

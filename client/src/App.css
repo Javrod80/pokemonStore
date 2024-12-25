@@ -508,3 +508,15 @@ font-weight: bold;
 .user-profile button:active {
   background-color: #b71c1c;
 }
+/* Estilos para el ToastyFy*/
+.custom-toast {
+  background-color: #cb1d1d;
+  color: white;
+  font-size: 24px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+}
+
+.custom-toast-body {
+  padding: 10px;
+}

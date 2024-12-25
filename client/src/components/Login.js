@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useUser } from '../providers/UserProvider';  
 import { useNavigate } from 'react-router-dom';
 
+
 const Login = () => {
     const navigate = useNavigate();  // Hook para redirigir
     const [username, setUsername] = useState('');
@@ -15,9 +16,8 @@ const Login = () => {
 
         if (success) {
             navigate('/home');  // Redirige a Home después del login exitoso
-        } else {
-            alert('Credenciales incorrectas');
-        }
+        };
+        
     };
 
     return (
@@ -42,6 +42,7 @@ const Login = () => {
                 </div>
                 <button type="submit">Iniciar sesión</button>
             </form>
+            
         </div>
     );
 };

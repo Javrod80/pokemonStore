@@ -14,6 +14,7 @@ import { CartProvider } from './providers/CartProvider';
 import { UserProvider } from './providers/UserProvider';
 import UserProfile from './hooks/UserProfile';
 import Layout from './components/Layout';
+import { ToastContainer } from 'react-toastify';
 
 
 
@@ -36,7 +37,7 @@ function App() {
             <Route path="*" element={<NotFound />} />
             </Route>
           </Routes>
-         
+          <ToastContainer />
         </Router>
         <Footer />
       </CartProvider>
