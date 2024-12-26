@@ -1,11 +1,21 @@
-import { createContext, useState, useContext } from "react";
+import { createContext, useState, useContext, useEffect } from "react";
+
 
 // Crear el contexto
 const CartContext = createContext();
 
 // Proveedor del contexto
 export function CartProvider({ children }) {
-    const [cart, setCart] = useState([]);
+    // Inicializar el carrito con datos del localStorage 
+    const [cart, setCart] = useState(() => {
+        const storedCart = localStorage.getItem("cart");
+        return storedCart ? JSON.parse(storedCart) : [];
+    });
+
+    // Guardar el carrito en localStorage cuando cambie
+    useEffect(() => {
+        localStorage.setItem("cart", JSON.stringify(cart));
+    }, [cart]);
 
     const addToCart = (pokemon) => {
         setCart((prevCart) => {
@@ -26,13 +36,9 @@ export function CartProvider({ children }) {
     };
 
     const removeFromCart = (id) => {
-        console.log("Eliminando Pokémon con id:", id);
-        setCart((prevCart) => {
-            const updatedCart = prevCart.filter((item) => item.id !== id);
-            console.log("Carrito despúes de eliminar:", updatedCart)
-            return updatedCart // Eliminar solo el Pokémon con ese id
-        })
+        setCart((prevCart) => prevCart.filter((item) => item.id !== id));
     };
+
 
     return (
         <CartContext.Provider value={{ cart, addToCart, removeFromCart }}>
