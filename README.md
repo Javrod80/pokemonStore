@@ -15,7 +15,7 @@
 - **Estado y lógica:** Hooks y Context API
 
 ## 📂 Estructura del Proyecto
-
+```
 /PokemonStore
 │── /src
 │   │── /components      # Componentes reutilizables
@@ -42,7 +42,7 @@
 │   │── index.js         # Punto de entrada de React
 │── package.json         # Dependencias y configuración
 │── README.md            # Documentación
-
+```
 
 ## 🚀 Instalación y Ejecución
 1. Clona el repositorio:
